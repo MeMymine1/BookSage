@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookSage</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <nav id="desktop-nav">
+        <div class="logo">
+            <img src="assets/logo-image.png" alt="Logo Image">
+            Booksage
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#begin-search">Begin Search</a></li>
+            <li><a href="#random-book">Random Book</a></li>
+        </ul>
+    </nav>
+
+    <nav id="hamburger-nav">
+        <div class="logo">Booksage</div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu-links">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#begin-search" onclick="toggleMenu()">Begin Search</a></li>
+                <li><a href="#random-book" onclick="toggleMenu()">Random Book</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <h1 class="header-text"> Find Your<br> Next Read</h1>
+    </header>
+
+    <section id="button-section" class="explore-section">
+        <div class="explore-button" id="begin-search-button">
+            <div class="button-text">begin search</div>
+        </div>
+    </section>
+
+    <section id="book-grid-section" class="books-section">
+        <div class="books-grid">
+            
+        </div>
+    </section>
+
+    <section class="about section" id="about">
+        <div class="about__container bd-grid">
+            <img src="assets/book-girl.png" alt="About Image" class="about__img">
+            <div class="about__text-container">
+                <h2 class="about__title">ABOUT US</h2>
+                <p class="about__text">We at BookSage, we believe your next great read should be as unique as you are.
+                    Let us help you find the perfect book that matches your unique taste</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="begin-search" class="section begin-search-section">
+        <div class="begin-search-container">
+            <div class="begin-search-text">
+                <h2>Begin Your Search</h2>
+                <p>For a limited time, enjoy a FREE book recommendation with every search. Find your next great read
+                    now!</p>
+                <button class="begin-search-button" onclick="showForm()">START NOW</button>
+            </div>
+            <div class="begin-search-image">
+                <img src="assets/book-lover.png" alt="Books Image">
+            </div>
+        </div>
+
+        
+        <div class="form-container" id="formContainer" style="display:none;">
+            <form id="bookForm">
+                <div class="step active" id="step1">
+                    <h3>Who is your favorite author?</h3>
+                    <label for="author">Favorite Author:</label>
+                    <input type="text" id="author" name="author" required>
+                    <div class="form-navigation">
+                        <button type="button" class="next-button" onclick="nextStep(2)">Next</button>
+                    </div>
+                </div>
+                <div class="step" id="step2">
+                    <h3>What genre of books do you enjoy reading?</h3>
+                    <label for="genre">Favorite Genre:</label>
+                    <select id="genre" name="genre" required>
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="sci-fi">Sci-Fi</option>
+                        <option value="mystery">Mystery</option>
+                        <option value="romance">Romance</option>
+                        <option value="horror">Horror</option>
+                        <option value="fiction">Fiction</option>
+                    </select>
+                    <div class="form-navigation">
+                        <button type="button" class="prev-button" onclick="prevStep(1)">Previous</button>
+                        <button type="button" class="next-button" onclick="nextStep(3)">Next</button>
+                    </div>
+                </div>
+                <div class="step" id="step3">
+                    <h3>What type of book length do you prefer?</h3>
+                    <label for="length">Preferred Length:</label>
+                    <select id="length" name="length" required>
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="short story">Short Story</option>
+                        <option value="novel">Novel</option>
+                        <option value="epic">Epic</option>
+                    </select>
+                    <div class="form-navigation">
+                        <button type="button" class="prev-button" onclick="prevStep(2)">Previous</button>
+                        <button type="button" class="next-button" onclick="nextStep(4)">Next</button>
+                    </div>
+                </div>
+                <div class="step" id="step4">
+                    <h3>What kind of vibe or atmosphere do you prefer in a book?</h3>
+                    <label for="vibes">Preferred Vibes:</label>
+                    <select id="vibes" name="vibes" required>
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="dark">Dark</option>
+                        <option value="funny">Funny</option>
+                        <option value="suspenseful">Suspenseful</option>
+                        <option value="heartwarming">Heartwarming</option>
+                        <option value="thrilling">Thrilling</option>
+                    </select>
+                    <div class="form-navigation">
+                        <button type="button" class="prev-button" onclick="prevStep(3)">Previous</button>
+                        <button type="button" class="next-button" onclick="nextStep(5)">Next</button>
+                    </div>
+                </div>
+                <div class="step" id="step5">
+                    <h3>What is your preferred reading level?</h3>
+                    <label for="readingLevel">Reading Level:</label>
+                    <select id="readingLevel" name="readingLevel" required>
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="lightweight">Lightweight</option>
+                        <option value="easy reads">Easy Reads</option>
+                        <option value="more challenging, dense texts">More Challenging, Dense Texts</option>
+                    </select>
+                    <div class="form-navigation">
+                        <button type="button" class="prev-button" onclick="prevStep(4)">Previous</button>
+                        <button type="submit" class="next-button">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    
+        <div id="results" class="results-section" style="display:none;">
+            <h2 class="section-title">Recommended Books</h2>
+            <div class="books-grid" id="recommendedBooks">
+             
+            </div>
+        </div>
+    </section>
+
+    <section id="random-book" class="section">
+    <div class="random-book-content">
+        <img id="random-book-image" src="assets/random-book.jpeg" alt="Random Book Cover" class="random-book-cover">
+        <div class="random-book-info">
+            <h2 class="random-book-title">Get a Random Book</h2>
+            <button class="random-book-button" onclick="displayRandomBook()">Randomize</button>
+        </div>
+    </div>
+</section>
+        <h2 class="section-title">Random Book</h2>
+        
+    </section>
+
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-image">
+                <img id="modalBookImage" src="" alt="Book Image">
+            </div>
+            <div class="modal-info">
+                <h2 id="modalBookTitle"></h2>
+                <h3 id="modalBookAuthor"></h3>
+                <p id="modalBookDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="book-data.js"></script>
+    <button id="back-to-top" title="Go to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M5 12L12 5L19 12" stroke="white" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+
+</body>
+</html>
